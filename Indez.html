@@ -3,9 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#123b2b">
-    <title>AgroField | Gestión inteligente</title>
+    <title>AgroField Premium | Gestión agrícola</title>
     <style>
         :root {
             --green: #176b45;
@@ -185,7 +185,7 @@
             border: 1px solid var(--line);
             padding: 10px 12px;
             border-radius: 12px;
-            width: min(280px, 30vw)
+            width: min(300px, 30vw)
         }
 
         .search input {
@@ -219,7 +219,7 @@
 
         .page.active {
             display: block;
-            animation: fade .22s ease
+            animation: fade .2s ease
         }
 
         @keyframes fade {
@@ -244,23 +244,12 @@
             justify-content: space-between;
             align-items: center;
             gap: 20px;
-            overflow: hidden;
-            position: relative
-        }
-
-        .welcome:after {
-            content: "🌿";
-            position: absolute;
-            right: 15%;
-            font-size: 100px;
-            opacity: .1;
-            transform: rotate(-18deg)
+            overflow: hidden
         }
 
         .welcome h3 {
             font-size: 24px;
-            margin: 0 0 8px;
-            letter-spacing: -.6px
+            margin: 0 0 8px
         }
 
         .welcome p {
@@ -270,7 +259,6 @@
         }
 
         .welcome .date {
-            z-index: 1;
             background: #ffffff18;
             border: 1px solid #ffffff30;
             padding: 10px 14px;
@@ -385,10 +373,6 @@
             color: white
         }
 
-        .btn-green:hover {
-            background: #105637
-        }
-
         .btn-outline {
             background: white;
             color: var(--ink);
@@ -475,6 +459,25 @@
             color: #275f9e
         }
 
+        .toolbar {
+            display: flex;
+            gap: 9px;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 15px 20px
+        }
+
+        .toolbar input,
+        .toolbar select {
+            border: 1px solid #dce5dc;
+            border-radius: 10px;
+            padding: 9px 11px;
+            outline: none;
+            background: white;
+            color: var(--ink);
+            max-width: 100%
+        }
+
         .form-grid {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -501,9 +504,7 @@
 
         .form-group input,
         .form-group select,
-        .form-group textarea,
-        .toolbar input,
-        .toolbar select {
+        .form-group textarea {
             border: 1px solid #dce5dc;
             border-radius: 10px;
             padding: 11px 12px;
@@ -540,21 +541,6 @@
             font-size: 13px
         }
 
-        .toolbar {
-            display: flex;
-            gap: 9px;
-            align-items: center;
-            flex-wrap: wrap;
-            padding: 15px 20px
-        }
-
-        .toolbar input,
-        .toolbar select {
-            width: auto;
-            max-width: 100%;
-            padding: 9px 11px
-        }
-
         .chart {
             display: flex;
             align-items: end;
@@ -581,13 +567,13 @@
             min-height: 3px
         }
 
-        .bar-label {
+        .bar-label,
+        .bar-value {
             font-size: 10px;
             color: var(--muted)
         }
 
         .bar-value {
-            font-size: 10px;
             color: var(--green);
             font-weight: 700
         }
@@ -719,15 +705,6 @@
             font-size: 18px
         }
 
-        .notice {
-            padding: 12px 15px;
-            border-radius: 11px;
-            background: #f0f8ed;
-            color: #2a6940;
-            font-size: 12px;
-            margin: 0 21px 17px
-        }
-
         .toast {
             position: fixed;
             right: 25px;
@@ -739,8 +716,7 @@
             border-radius: 12px;
             box-shadow: 0 10px 35px #0002;
             font-size: 12px;
-            max-width: min(400px, calc(100vw - 40px));
-            animation: fade .2s
+            max-width: min(400px, calc(100vw - 40px))
         }
 
         .mobile-menu {
@@ -759,6 +735,45 @@
 
         .muted {
             color: var(--muted)
+        }
+
+        .dark {
+            --ink: #e7efe9;
+            --muted: #a6b7ac;
+            --bg: #101a14;
+            --white: #17251d;
+            --line: #2b3a30;
+            --shadow: 0 12px 35px #0002
+        }
+
+        .dark .topbar,
+        .dark .section,
+        .dark .stat-card,
+        .dark .modal,
+        .dark .form-group input,
+        .dark .form-group select,
+        .dark .form-group textarea,
+        .dark .toolbar input,
+        .dark .toolbar select {
+            background: #17251d;
+            color: var(--ink)
+        }
+
+        .dark th {
+            background: #1c2b21
+        }
+
+        .dark .search {
+            background: #17251d
+        }
+
+        .dark .btn-outline {
+            background: #17251d;
+            color: var(--ink)
+        }
+
+        .dark .calendar-day {
+            background: #17251d
         }
 
         @media(max-width:1100px) {
@@ -828,10 +843,6 @@
                 font-size: 21px
             }
 
-            .cards-grid {
-                gap: 10px
-            }
-
             .stat-card {
                 padding: 14px
             }
@@ -899,7 +910,7 @@
         <div class="nav-label">Principal</div>
         <button class="nav-item active" data-page="dashboard"><span class="ico">▦</span>Panel principal</button>
         <button class="nav-item" data-page="inventory"><span class="ico">▤</span>Inventario</button>
-        <button class="nav-item" data-page="sales"><span class="ico">＄</span>Ventas y facturación</button>
+        <button class="nav-item" data-page="sales"><span class="ico">$</span>Ventas y facturación</button>
         <button class="nav-item" data-page="crops"><span class="ico">🌿</span>Gestión agrícola</button>
         <button class="nav-item" data-page="suppliers"><span class="ico">♧</span>Proveedores y compras</button>
         <button class="nav-item" data-page="calendar"><span class="ico">▦</span>Calendario de labores</button>
@@ -907,7 +918,7 @@
         <div class="nav-label">Administración</div>
         <button class="nav-item" data-page="users"><span class="ico">♙</span>Usuarios y permisos</button>
         <button class="nav-item" data-page="backups"><span class="ico">⤓</span>Copias de seguridad</button>
-        <div class="side-bottom">Versión 2.0 · Almacenamiento local<br>Los datos se guardan en este navegador.</div>
+        <div class="side-bottom">AgroField Premium 3.0<br>Datos locales en este navegador</div>
     </aside>
     <main class="main">
         <header class="topbar">
@@ -918,8 +929,8 @@
                     <div class="crumb">AgroField / <span id="crumbTitle">Resumen</span></div>
                 </div>
             </div>
-            <div class="top-right"><label class="search" title="Buscar en la sección actual">⌕ <input id="globalSearch"
-                        placeholder="Buscar..." aria-label="Buscar"></label>
+            <div class="top-right"><label class="search" title="Buscar"><span>⌕</span><input id="globalSearch"
+                        placeholder="Buscar en esta sección..." aria-label="Buscar"></label>
                 <div class="avatar" id="avatar">AD</div>
             </div>
         </header>
@@ -937,7 +948,7 @@
                     <div class="section-header">
                         <div>
                             <div class="section-title">Actividad reciente</div>
-                            <div class="section-sub">Últimos movimientos registrados en AgroField</div>
+                            <div class="section-sub">Movimientos registrados en AgroField</div>
                         </div><button class="btn btn-outline" data-go="reports">Ver informes →</button>
                     </div>
                     <div class="table-wrap">
@@ -958,8 +969,7 @@
                     <div class="section-header">
                         <div>
                             <div class="section-title">Alertas de inventario</div>
-                            <div class="section-sub">Productos con existencias iguales o inferiores al mínimo
-                                configurado</div>
+                            <div class="section-sub">Productos en el mínimo o por debajo</div>
                         </div><button class="btn btn-soft" data-go="inventory">Revisar inventario</button>
                     </div>
                     <div class="table-wrap">
@@ -977,3 +987,359 @@
                     </div>
                 </div>
             </section>
+            <section class="page" id="page-inventory">
+                <div class="section">
+                    <div class="section-header">
+                        <div>
+                            <div class="section-title">Inventario inteligente</div>
+                            <div class="section-sub">Control de existencias, costos y alertas de stock</div>
+                        </div><button class="btn btn-green" data-action="add-product">＋ Nuevo producto</button>
+                    </div>
+                    <div class="toolbar"><input id="inventoryFilter"
+                            placeholder="Buscar producto o categoría..."><select id="stockFilter">
+                            <option value="all">Todos los estados</option>
+                            <option value="low">Stock bajo</option>
+                            <option value="ok">Stock suficiente</option>
+                        </select><button class="btn btn-outline" data-export="products">Exportar CSV</button></div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Categoría</th>
+                                    <th>Existencias</th>
+                                    <th>Unidad</th>
+                                    <th>Costo unitario</th>
+                                    <th>Mínimo</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="inventoryTable"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            <section class="page" id="page-sales">
+                <div class="section">
+                    <div class="section-header">
+                        <div>
+                            <div class="section-title">Ventas y facturación</div>
+                            <div class="section-sub">Registra ventas y descuenta automáticamente del inventario</div>
+                        </div><button class="btn btn-green" data-action="add-sale">＋ Registrar venta</button>
+                    </div>
+                    <div class="toolbar"><input id="salesFilter" placeholder="Buscar factura o cliente..."><button
+                            class="btn btn-outline" data-export="sales">Exportar CSV</button></div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Factura</th>
+                                    <th>Fecha</th>
+                                    <th>Cliente</th>
+                                    <th>Producto</th>
+                                    <th>Cantidad</th>
+                                    <th>Total</th>
+                                    <th>Pago</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="salesTable"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            <section class="page" id="page-crops">
+                <div class="section">
+                    <div class="section-header">
+                        <div>
+                            <div class="section-title">Gestión agrícola</div>
+                            <div class="section-sub">Seguimiento de cultivos, siembras y cosechas</div>
+                        </div><button class="btn btn-green" data-action="add-crop">＋ Registrar cultivo</button>
+                    </div>
+                    <div class="toolbar"><input id="cropsFilter" placeholder="Buscar cultivo o parcela..."><button
+                            class="btn btn-outline" data-export="crops">Exportar CSV</button></div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Cultivo</th>
+                                    <th>Parcela</th>
+                                    <th>Área (ha)</th>
+                                    <th>Siembra</th>
+                                    <th>Cosecha estimada</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="cropsTable"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            <section class="page" id="page-suppliers">
+                <div class="section">
+                    <div class="section-header">
+                        <div>
+                            <div class="section-title">Proveedores y compras</div>
+                            <div class="section-sub">Directorio de proveedores y registro de compras</div>
+                        </div><button class="btn btn-green" data-action="add-supplier">＋ Nuevo proveedor</button><button
+                            class="btn btn-soft" data-action="add-purchase">＋ Registrar compra</button>
+                    </div>
+                    <div class="toolbar"><input id="suppliersFilter" placeholder="Buscar proveedor..."><button
+                            class="btn btn-outline" data-export="suppliers">Exportar CSV</button></div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Proveedor</th>
+                                    <th>Contacto</th>
+                                    <th>Teléfono</th>
+                                    <th>Correo</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="suppliersTable"></tbody>
+                        </table>
+                    </div>
+                    <div class="section-header">
+                        <div>
+                            <div class="section-title">Compras registradas</div>
+                        </div>
+                    </div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Proveedor</th>
+                                    <th>Producto</th>
+                                    <th>Cantidad</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody id="purchasesTable"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            <section class="page" id="page-calendar">
+                <div class="section">
+                    <div class="section-header">
+                        <div>
+                            <div class="section-title">Calendario de labores</div>
+                            <div class="section-sub">Programa y consulta las tareas de campo</div>
+                        </div><button class="btn btn-green" data-action="add-task">＋ Nueva labor</button>
+                    </div>
+                    <div class="toolbar"><input type="month" id="calendarMonth"><button class="btn btn-outline"
+                            data-action="calendar-today">Mes actual</button></div>
+                    <div class="calendar-head">
+                        <span>Lun</span><span>Mar</span><span>Mié</span><span>Jue</span><span>Vie</span><span>Sáb</span><span>Dom</span>
+                    </div>
+                    <div class="calendar-grid" id="calendarGrid"></div>
+                    <div class="section-header">
+                        <div>
+                            <div class="section-title">Próximas labores</div>
+                        </div>
+                    </div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Labor</th>
+                                    <th>Responsable</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tasksTable"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            <section class="page" id="page-reports">
+                <div class="cards-grid" id="reportStats"></div>
+                <div class="section">
+                    <div class="section-header">
+                        <div>
+                            <div class="section-title">Ventas por mes</div>
+                            <div class="section-sub">Ingresos de los últimos seis meses, calculados desde las ventas
+                                registradas</div>
+                        </div><button class="btn btn-outline" data-export="sales">Exportar ventas CSV</button>
+                    </div>
+                    <div class="chart" id="salesChart"></div>
+                </div>
+                <div class="section">
+                    <div class="section-header">
+                        <div>
+                            <div class="section-title">Resumen de inventario</div>
+                            <div class="section-sub">Valor estimado de las existencias según costo unitario</div>
+                        </div>
+                    </div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Existencias</th>
+                                    <th>Costo unitario</th>
+                                    <th>Valor en inventario</th>
+                                </tr>
+                            </thead>
+                            <tbody id="inventoryReport"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            <section class="page" id="page-users">
+                <div class="section">
+                    <div class="section-header">
+                        <div>
+                            <div class="section-title">Usuarios y permisos (local)</div>
+                            <div class="section-sub">Directorio local de responsables. No equivale a autenticación
+                                segura ni crea cuentas en un servidor.</div>
+                        </div><button class="btn btn-green" data-action="add-user">＋ Añadir usuario</button>
+                    </div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Correo</th>
+                                    <th>Rol</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="usersTable"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            <section class="page" id="page-backups">
+                <div class="section">
+                    <div class="section-header">
+                        <div>
+                            <div class="section-title">Copias de seguridad</div>
+                            <div class="section-sub">Exporta todos los datos de AgroField a un archivo JSON o restaura
+                                un respaldo.</div>
+                        </div>
+                    </div>
+                    <div class="settings-grid">
+                        <div class="setting-card">
+                            <h4>⬇ Crear copia de seguridad</h4>
+                            <p>Descarga productos, ventas, cultivos, proveedores, compras, tareas y usuarios en un
+                                archivo JSON.</p><button class="btn btn-green" id="backupBtn">Descargar respaldo
+                                JSON</button>
+                        </div>
+                        <div class="setting-card">
+                            <h4>⬆ Restaurar respaldo</h4>
+                            <p>Importa un respaldo JSON válido. Los datos actuales se reemplazarán después de confirmar.
+                            </p><input type="file" id="restoreFile" accept=".json,application/json"><button
+                                class="btn btn-outline" id="restoreBtn" style="margin-top:10px">Restaurar
+                                archivo</button>
+                        </div>
+                        <div class="setting-card">
+                            <h4>🌙 Apariencia</h4>
+                            <p>Activa o desactiva el modo oscuro de la interfaz.</p><button class="btn btn-soft"
+                                id="themeBtn">Cambiar modo claro/oscuro</button>
+                        </div>
+                        <div class="setting-card">
+                            <h4>🧹 Datos de demostración</h4>
+                            <p>AgroField empieza con algunos registros de ejemplo. Puedes eliminarlos y trabajar con tus
+                                propios datos.</p><button class="btn btn-danger" id="clearBtn">Borrar todos los
+                                datos</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="modalTitle">Formulario</h3><button class="modal-close" id="modalClose"
+                    aria-label="Cerrar">×</button>
+            </div>
+            <form id="dataForm">
+                <div class="form-grid" id="formFields"></div>
+                <div class="modal-footer"><button type="button" class="btn btn-outline"
+                        id="cancelModal">Cancelar</button><button type="submit" class="btn btn-green">Guardar
+                        registro</button></div>
+            </form>
+        </div>
+    </div>
+    <div id="toastHost" aria-live="polite"></div>
+    <script>
+        "use strict";
+        const STORAGE_KEY = "agrofield_premium_v3";
+        const $ = s => document.querySelector(s);
+        const $$ = s => [...document.querySelectorAll(s)];
+        const todayISO = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}` };
+        const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+        const money = n => new Intl.NumberFormat("es-CO", { style: "currency", currency: "COP", maximumFractionDigits: 0 }).format(Number(n) || 0);
+        const dateFmt = s => s ? new Date(s + "T12:00:00").toLocaleDateString("es-CO") : "—";
+        const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+        const seed = { products: [{ id: "p1", name: "Semillas de maíz", category: "Semillas", qty: 120, unit: "kg", cost: 8500, min: 20 }, { id: "p2", name: "Fertilizante orgánico", category: "Fertilizantes", qty: 14, unit: "sacos", cost: 68000, min: 15 }, { id: "p3", name: "Guantes de trabajo", category: "Herramientas", qty: 35, unit: "pares", cost: 12000, min: 8 }], sales: [], crops: [{ id: "c1", name: "Maíz", plot: "Parcela Norte", area: 2.5, sowing: todayISO(), harvest: "", status: "En crecimiento" }], suppliers: [{ id: "s1", name: "Agroinsumos del Valle", contact: "Laura Gómez", phone: "3001234567", email: "ventas@example.com" }], purchases: [], tasks: [{ id: "t1", date: todayISO(), name: "Revisar riego", person: "Administrador", status: "Pendiente" }], users: [{ id: "u1", name: "Administrador", email: "admin@agrofield.local", role: "Administrador" }], activity: [] };
+        let db = loadDB(), editing = null, currentFormType = null;
+        function loadDB() { try { const raw = localStorage.getItem(STORAGE_KEY); if (raw) { const d = JSON.parse(raw); for (const k of Object.keys(seed)) if (!Array.isArray(d[k])) d[k] = []; return d } } catch (e) { console.warn("No se pudo leer el almacenamiento", e) } return structuredClone(seed) }
+        function saveDB() { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(db)); return true } catch (e) { toast("No se pudieron guardar los datos. Revisa el espacio disponible del navegador."); return false } }
+        function toast(msg) { const host = $("#toastHost"); host.innerHTML = `<div class="toast">${esc(msg)}</div>`; setTimeout(() => { host.innerHTML = "" }, 3000) }
+        const titles = { dashboard: ["Panel principal", "Resumen"], inventory: ["Inventario", "Existencias y productos"], sales: ["Ventas y facturación", "Registro comercial"], crops: ["Gestión agrícola", "Cultivos y cosechas"], suppliers: ["Proveedores y compras", "Abastecimiento"], calendar: ["Calendario de labores", "Planificación"], reports: ["Informes y reportes", "Análisis"], users: ["Usuarios y permisos", "Administración"], backups: ["Copias de seguridad", "Datos y configuración"] };
+        function go(page) { if (!titles[page]) return; $$(".page").forEach(p => p.classList.toggle("active", p.id === "page-" + page)); $$(".nav-item").forEach(b => b.classList.toggle("active", b.dataset.page === page)); $("#pageTitle").textContent = titles[page][0]; $("#crumbTitle").textContent = titles[page][1]; $("#sidebar").classList.remove("open"); $("#globalSearch").value = ""; renderAll(); window.scrollTo({ top: 0, behavior: "smooth" }) }
+        function activity(type, detail, value = 0) { db.activity.unshift({ id: uid(), date: todayISO(), type, detail, value: Number(value) || 0 }); db.activity = db.activity.slice(0, 100) }
+        function badge(status) { let c = "badge-blue"; if (["Disponible", "En crecimiento", "Completada", "Administrador"].includes(status)) c = "badge-green"; if (["Stock bajo", "Pendiente", "Planificado"].includes(status)) c = "badge-yellow"; if (["Agotado", "Cancelada"].includes(status)) c = "badge-red"; return `<span class="badge-tag ${c}">${esc(status)}</span>` }
+        function tableRows(id, rows, cols) { const el = $("#" + id); if (!el) return; el.innerHTML = rows.length ? rows.map(r => `<tr>${cols.map(c => `<td>${typeof c === "function" ? c(r) : esc(r[c] ?? "—")}</td>`).join("")}</tr>`).join("") : `<tr><td colspan="20" class="empty">No hay registros. Usa el botón de arriba para añadir uno.</td></tr>` }
+        function renderDashboard() { const low = db.products.filter(p => Number(p.qty) <= Number(p.min)); const stockValue = db.products.reduce((s, p) => s + Number(p.qty) * Number(p.cost), 0); const salesTotal = db.sales.reduce((s, x) => s + Number(x.total), 0); $("#dashboardStats").innerHTML = [["📦", "Productos", db.products.length, "Referencias en inventario"], ["⚠️", "Alertas de stock", low.length, "Productos en nivel mínimo"], ["💰", "Ventas registradas", money(salesTotal), `${db.sales.length} operaciones`], ["🌾", "Cultivos activos", db.crops.filter(c => c.status !== "Cosechado").length, `Inventario: ${money(stockValue)}`]].map(x => `<div class="stat-card"><div class="stat-head">${x[1]}<span class="stat-icon">${x[0]}</span></div><div class="stat-value">${x[2]}</div><div class="stat-foot">${x[3]}</div></div>`).join(""); tableRows("recentTable", db.activity.slice(0, 8), [r => dateFmt(r.date), r => " " + r.type, "detail", r => money(r.value)]); tableRows("lowStockTable", low, ["name", r => `${r.qty} ${r.unit}`, "min", r => badge(Number(r.qty) === 0 ? "Agotado" : "Stock bajo")]) }
+        function renderInventory() { const q = ($("#inventoryFilter")?.value || "").toLowerCase(), f = $("#stockFilter")?.value || "all"; const rows = db.products.filter(p => (`${p.name} ${p.category}`.toLowerCase().includes(q)) && (f === "all" || (f === "low" ? Number(p.qty) <= Number(p.min) : Number(p.qty) > Number(p.min)))); tableRows("inventoryTable", rows, ["name", "category", r => `${r.qty}`, "unit", r => money(r.cost), "min", r => badge(Number(r.qty) <= 0 ? "Agotado" : Number(r.qty) <= Number(r.min) ? "Stock bajo" : "Disponible"), r => `<button class="btn btn-outline btn-sm" data-edit="product" data-id="${r.id}">Editar</button> <button class="btn btn-danger btn-sm" data-delete="product" data-id="${r.id}">Eliminar</button>`]) }
+        function renderSales() { const q = ($("#salesFilter")?.value || "").toLowerCase(); tableRows("salesTable", db.sales.filter(s => (s.client + " " + s.invoice + " " + s.product).toLowerCase().includes(q)), ["invoice", r => dateFmt(r.date), "client", "product", "qty", r => money(r.total), "payment", r => `<button class="btn btn-outline btn-sm" data-invoice="${r.id}">Ver factura</button> <button class="btn btn-danger btn-sm" data-delete="sale" data-id="${r.id}">Eliminar</button>`]) }
+        function renderCrops() { const q = ($("#cropsFilter")?.value || "").toLowerCase(); tableRows("cropsTable", db.crops.filter(c => (c.name + " " + c.plot).toLowerCase().includes(q)), ["name", "plot", "area", r => dateFmt(r.sowing), r => dateFmt(r.harvest), r => badge(r.status), r => `<button class="btn btn-outline btn-sm" data-edit="crop" data-id="${r.id}">Editar</button> <button class="btn btn-danger btn-sm" data-delete="crop" data-id="${r.id}">Eliminar</button>`]) }
+        function renderSuppliers() { const q = ($("#suppliersFilter")?.value || "").toLowerCase(); tableRows("suppliersTable", db.suppliers.filter(s => (s.name + " " + s.contact + " " + s.email).toLowerCase().includes(q)), ["name", "contact", "phone", "email", r => `<button class="btn btn-outline btn-sm" data-edit="supplier" data-id="${r.id}">Editar</button> <button class="btn btn-danger btn-sm" data-delete="supplier" data-id="${r.id}">Eliminar</button>`]); tableRows("purchasesTable", db.purchases, [r => dateFmt(r.date), "supplier", "product", "qty", r => money(r.total)]) }
+        function renderTasks() { tableRows("tasksTable", [...db.tasks].sort((a, b) => a.date.localeCompare(b.date)), [r => dateFmt(r.date), "name", "person", r => badge(r.status), r => `<button class="btn btn-outline btn-sm" data-edit="task" data-id="${r.id}">Editar</button> <button class="btn btn-danger btn-sm" data-delete="task" data-id="${r.id}">Eliminar</button>`]); renderCalendar() }
+        function renderCalendar() { const input = $("#calendarMonth"); if (!input.value) input.value = todayISO().slice(0, 7); const [y, m] = input.value.split("-").map(Number), first = new Date(y, m - 1, 1), days = new Date(y, m, 0).getDate(), offset = (first.getDay() + 6) % 7; let html = ""; for (let i = 0; i < offset; i++)html += "<div></div>"; for (let d = 1; d <= days; d++) { const iso = `${y}-${String(m).padStart(2, "0")}-${String(d).padStart(2, "0")}`, events = db.tasks.filter(t => t.date === iso); html += `<div class="calendar-day ${iso === todayISO() ? "today" : ""}" data-calendar-date="${iso}"><strong>${d}</strong>${events.map(e => `<span class="event-dot">${esc(e.name)}</span>`).join("")}</div>` } $("#calendarGrid").innerHTML = html }
+        function renderReports() { const totalSales = db.sales.reduce((s, x) => s + Number(x.total), 0), expenses = db.purchases.reduce((s, x) => s + Number(x.total), 0), stock = db.products.reduce((s, p) => s + Number(p.qty) * Number(p.cost), 0); $("#reportStats").innerHTML = [["Ventas totales", money(totalSales)], ["Compras registradas", money(expenses)], ["Valor de inventario", money(stock)], ["Ganancia bruta estimada", money(totalSales - expenses)]].map(x => `<div class="stat-card"><div class="stat-head">${x[0]}</div><div class="stat-value">${x[1]}</div><div class="stat-foot">Basado en registros guardados</div></div>`).join(""); const months = []; for (let i = 5; i >= 0; i--) { const d = new Date(); d.setDate(1); d.setMonth(d.getMonth() - i); const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`; months.push({ key, label: d.toLocaleDateString("es-CO", { month: "short" }), value: db.sales.filter(s => s.date.startsWith(key)).reduce((sum, s) => sum + Number(s.total), 0) }) } const max = Math.max(1, ...months.map(m => m.value)); $("#salesChart").innerHTML = months.map(m => `<div class="bar-wrap"><div class="bar-value">${m.value ? money(m.value) : "$0"}</div><div class="bar" style="height:${Math.max(3, m.value / max * 115)}px" title="${money(m.value)}"></div><div class="bar-label">${esc(m.label)}</div></div>`).join(""); tableRows("inventoryReport", db.products, ["name", "qty", r => money(r.cost), r => money(r.qty * r.cost)]) }
+        function renderUsers() { tableRows("usersTable", db.users, ["name", "email", "role", r => `<button class="btn btn-outline btn-sm" data-edit="user" data-id="${r.id}">Editar</button> <button class="btn btn-danger btn-sm" data-delete="user" data-id="${r.id}">Eliminar</button>`]) }
+        function renderAll() { renderDashboard(); renderInventory(); renderSales(); renderCrops(); renderSuppliers(); renderTasks(); renderReports(); renderUsers() }
+        const field = (name, label, type = "text", extra = {}) => ({ name, label, type, ...extra });
+        function formSpec(type, item = {}) {
+            const specs = {
+                product: { title: "Producto de inventario", fields: [field("name", "Nombre del producto", { type: "text" }), field("category", "Categoría"), field("qty", "Existencias", "number", { min: 0, step: "any" }), field("unit", "Unidad (kg, unidad, saco...)"), field("cost", "Costo unitario (COP)", "number", { min: 0, step: "1" }), field("min", "Stock mínimo", "number", { min: 0, step: "any" })] },
+                sale: { title: "Registrar venta", fields: [field("client", "Nombre del cliente"), field("productId", "Producto", "select", { options: db.products.map(p => ({ value: p.id, label: `${p.name} — disponible: ${p.qty} ${p.unit}` })) }), field("qty", "Cantidad", "number", { min: 0.01, step: "any" }), field("payment", "Método de pago", "select", { options: ["Efectivo", "Transferencia", "Tarjeta", "Crédito", "Otro"].map(x => ({ value: x, label: x })) })] },
+                crop: { title: "Cultivo", fields: [field("name", "Cultivo"), field("plot", "Parcela o lote"), field("area", "Área (hectáreas)", "number", { min: 0, step: "any" }), field("sowing", "Fecha de siembra", "date"), field("harvest", "Cosecha estimada", "date"), field("status", "Estado", "select", { options: ["Planificado", "En crecimiento", "Listo para cosecha", "Cosechado"].map(x => ({ value: x, label: x })) })] },
+                supplier: { title: "Proveedor", fields: [field("name", "Nombre del proveedor"), field("contact", "Persona de contacto"), field("phone", "Teléfono", "tel"), field("email", "Correo electrónico", "email")] },
+                purchase: { title: "Registrar compra", fields: [field("supplierId", "Proveedor", "select", { options: db.suppliers.map(s => ({ value: s.id, label: s.name })) }), field("productId", "Producto", "select", { options: db.products.map(p => ({ value: p.id, label: p.name })) }), field("qty", "Cantidad comprada", "number", { min: 0.01, step: "any" }), field("unitCost", "Costo unitario (COP)", "number", { min: 0, step: "1" }), field("date", "Fecha", "date", { default: todayISO() })] },
+                task: { title: "Labor agrícola", fields: [field("name", "Nombre de la labor"), field("date", "Fecha", "date", { default: todayISO() }), field("person", "Responsable"), field("status", "Estado", "select", { options: ["Pendiente", "En proceso", "Completada"].map(x => ({ value: x, label: x })) }), field("notes", "Observaciones", "textarea")] },
+                user: { title: "Usuario local", fields: [field("name", "Nombre"), field("email", "Correo electrónico", "email"), field("role", "Rol", "select", { options: ["Administrador", "Supervisor", "Operario", "Consulta"].map(x => ({ value: x, label: x })) })] }
+            }; const spec = specs[type]; return { ...spec, fields: spec.fields.map(f => typeof f.type === "object" ? { ...f, type: f.type.type || "text" } : f) }
+        }
+        function openForm(type, id = null) { if (type === "sale" && !db.products.length) return toast("Agrega primero un producto al inventario."); if (type === "purchase" && (!db.products.length || !db.suppliers.length)) return toast("Registra primero un producto y un proveedor."); editing = id ? { type, id } : null; currentFormType = type; const existing = id ? db[plural(type)].find(x => x.id === id) : null; const spec = formSpec(type, existing || {}); $("#modalTitle").textContent = (id ? "Editar: " : "") + spec.title; $("#formFields").innerHTML = spec.fields.map(f => { let value = existing ? (existing[f.name] ?? "") : (f.default ?? ""); if (type === "sale" && f.name === "productId") value = db.products[0]?.id || ""; if (type === "purchase" && f.name === "productId") value = db.products[0]?.id || ""; if (type === "purchase" && f.name === "supplierId") value = db.suppliers[0]?.id || ""; const required = !["notes", "harvest", "email", "contact", "phone"].includes(f.name); const common = `name="${f.name}" ${required ? "required" : ""} ${f.min !== undefined ? `min="${f.min}"` : ""} ${f.step ? `step="${f.step}"` : ""}`; let control; if (f.type === "select") control = `<select ${common}>${(f.options || []).map(o => `<option value="${esc(o.value)}" ${String(value) === String(o.value) ? "selected" : ""}>${esc(o.label)}</option>`).join("")}</select>`; else if (f.type === "textarea") control = `<textarea ${common}>${esc(value)}</textarea>`; else control = `<input type="${f.type || "text"}" ${common} value="${esc(value)}" ${f.type === "number" ? "inputmode=\"decimal\"" : ""}>`; return `<div class="form-group ${["notes"].includes(f.name) ? "full" : ""}"><label>${esc(f.label)}</label>${control}</div>` }).join(""); $("#modalOverlay").classList.add("active"); setTimeout(() => $("#formFields input, #formFields select, #formFields textarea")?.focus(), 50) }
+        function plural(type) { return { product: "products", sale: "sales", crop: "crops", supplier: "suppliers", purchase: "purchases", task: "tasks", user: "users" }[type] }
+        function handleSubmit(e) {
+            e.preventDefault(); const type = currentFormType, form = new FormData(e.target), d = Object.fromEntries(form.entries()); const num = (key) => Number(d[key] || 0); if (type === "product") { const item = { id: editing?.id || uid(), name: d.name.trim(), category: d.category.trim(), qty: num("qty"), unit: d.unit.trim(), cost: num("cost"), min: num("min") }; upsert("products", item, editing) }
+            if (type === "sale") { const p = db.products.find(x => x.id === d.productId), qty = num("qty"); if (!p) return toast("Selecciona un producto válido."); if (qty <= 0) return toast("La cantidad debe ser mayor que cero."); if (qty > Number(p.qty)) return toast(`Stock insuficiente. Disponible: ${p.qty} ${p.unit}.`); p.qty = Number(p.qty) - qty; const item = { id: uid(), invoice: "AF-" + new Date().getFullYear() + "-" + String(db.sales.length + 1).padStart(4, "0"), date: todayISO(), client: d.client.trim(), product: p.name, productId: p.id, qty, unit: p.unit, unitPrice: Number(p.cost), total: qty * Number(p.cost), payment: d.payment }; db.sales.unshift(item); activity("Venta", `${item.invoice} · ${item.client} · ${p.name}`, item.total) }
+            if (type === "crop") { upsert("crops", { id: editing?.id || uid(), name: d.name.trim(), plot: d.plot.trim(), area: num("area"), sowing: d.sowing, harvest: d.harvest, status: d.status }, editing) }
+            if (type === "supplier") { upsert("suppliers", { id: editing?.id || uid(), name: d.name.trim(), contact: d.contact.trim(), phone: d.phone.trim(), email: d.email.trim() }, editing) }
+            if (type === "purchase") { const p = db.products.find(x => x.id === d.productId), s = db.suppliers.find(x => x.id === d.supplierId), qty = num("qty"), unitCost = num("unitCost"); if (!p || !s || qty <= 0 || unitCost < 0) return toast("Revisa los datos de la compra."); p.qty = Number(p.qty) + qty; p.cost = unitCost; const item = { id: uid(), date: d.date, supplier: s.name, supplierId: s.id, product: p.name, productId: p.id, qty, unitCost, total: qty * unitCost }; db.purchases.unshift(item); activity("Compra", `${s.name} · ${p.name}`, item.total) }
+            if (type === "task") { upsert("tasks", { id: editing?.id || uid(), name: d.name.trim(), date: d.date, person: d.person.trim(), status: d.status, notes: d.notes.trim() }, editing) }
+            if (type === "user") { upsert("users", { id: editing?.id || uid(), name: d.name.trim(), email: d.email.trim(), role: d.role }, editing) }
+            saveDB(); $("#modalOverlay").classList.remove("active"); renderAll(); toast(editing ? "Registro actualizado." : "Registro guardado correctamente."); editing = null; currentFormType = null
+        }
+        function upsert(key, item, edit) { const i = db[key].findIndex(x => x.id === item.id); if (i >= 0) db[key][i] = item; else db[key].unshift(item); activity(edit ? "Edición" : "Registro", `${item.name || item.invoice || item.title || "Registro"} guardado`, 0) }
+        function removeRecord(type, id) { const key = plural(type), item = db[key].find(x => x.id === id); if (!item) return; if (type === "sale") { const p = db.products.find(x => x.id === item.productId); if (p) p.qty = Number(p.qty) + Number(item.qty) } if (type === "purchase") { const p = db.products.find(x => x.id === item.productId); if (p) p.qty = Math.max(0, Number(p.qty) - Number(item.qty)) } if (!confirm(`¿Eliminar este registro${item.name ? " (" + item.name + ")" : ""}?`)) return; db[key] = db[key].filter(x => x.id !== id); activity("Eliminación", item.name || item.invoice || "Registro eliminado", 0); saveDB(); renderAll(); toast("Registro eliminado.") }
+        function exportCSV(type) { const rows = db[plural(type)] || []; if (!rows.length) return toast("No hay registros para exportar."); const keys = [...new Set(rows.flatMap(Object.keys))]; const csv = [keys.join(";"), ...rows.map(r => keys.map(k => `"${String(r[k] ?? "").replace(/"/g, '""')}"`).join(";"))].join("\r\n"); download(new Blob(["\ufeff" + csv], { type: "text/csv;charset=utf-8" }), `agrofield_${type}_${todayISO()}.csv`); toast("Archivo CSV preparado.") }
+        function download(blob, name) { const url = URL.createObjectURL(blob), a = document.createElement("a"); a.href = url; a.download = name; document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000) }
+        function backup() { download(new Blob([JSON.stringify({ app: "AgroField", version: 3, exportedAt: new Date().toISOString(), data: db }, null, 2)], { type: "application/json" }), `agrofield_respaldo_${todayISO()}.json`); toast("Respaldo descargado.") }
+        function restore() { const file = $("#restoreFile").files[0]; if (!file) return toast("Selecciona primero un archivo JSON."); const reader = new FileReader(); reader.onload = () => { try { const obj = JSON.parse(reader.result), d = obj.data || obj; if (!d || !Array.isArray(d.products) || !Array.isArray(d.sales)) throw new Error("Formato inválido"); if (!confirm("Esto reemplazará los datos actuales. ¿Continuar?")) return; for (const k of Object.keys(seed)) db[k] = Array.isArray(d[k]) ? d[k] : []; saveDB(); renderAll(); toast("Respaldo restaurado correctamente."); } catch (e) { toast("El archivo no es un respaldo válido de AgroField.") } }; reader.readAsText(file) }
+        function showInvoice(id) { const s = db.sales.find(x => x.id === id); if (!s) return; const w = window.open("", "_blank", "width=700,height=700"); if (!w) return toast("El navegador bloqueó la ventana. Permite ventanas emergentes para imprimir."); w.document.write(`<!doctype html><html lang="es"><meta charset="utf-8"><title>Factura ${esc(s.invoice)}</title><style>body{font:15px Arial;padding:35px;color:#17251d}h1{color:#176b45}table{width:100%;border-collapse:collapse;margin-top:25px}td,th{padding:12px;border-bottom:1px solid #ddd;text-align:left}.total{text-align:right;font-size:22px;font-weight:bold;margin-top:25px}.muted{color:#667}</style><h1>AgroField</h1><p>Comprobante interno de venta</p><hr><p><b>Factura:</b> ${esc(s.invoice)}<br><b>Fecha:</b> ${esc(dateFmt(s.date))}<br><b>Cliente:</b> ${esc(s.client)}<br><b>Pago:</b> ${esc(s.payment)}</p><table><thead><tr><th>Producto</th><th>Cantidad</th><th>Precio unitario</th><th>Total</th></tr></thead><tbody><tr><td>${esc(s.product)}</td><td>${esc(s.qty)} ${esc(s.unit)}</td><td>${money(s.unitPrice)}</td><td>${money(s.total)}</td></tr></tbody></table><div class="total">Total: ${money(s.total)}</div><p class="muted">Documento interno generado por AgroField; no sustituye una factura electrónica autorizada.</p><script>window.onload=()=>window.print()<\/script></html>`); w.document.close() }
+        $$(".nav-item").forEach(b => b.addEventListener("click", () => go(b.dataset.page)));
+        $("#menuBtn").addEventListener("click", () => $("#sidebar").classList.toggle("open"));
+        document.addEventListener("click", e => { const goBtn = e.target.closest("[data-go]"); if (goBtn) go(goBtn.dataset.go); const act = e.target.closest("[data-action]"); if (act) { const a = act.dataset.action; if (a === "add-product") openForm("product"); if (a === "add-sale") openForm("sale"); if (a === "add-crop") openForm("crop"); if (a === "add-supplier") openForm("supplier"); if (a === "add-purchase") openForm("purchase"); if (a === "add-task") openForm("task"); if (a === "add-user") openForm("user"); if (a === "calendar-today") { $("#calendarMonth").value = todayISO().slice(0, 7); renderCalendar() } } const edit = e.target.closest("[data-edit]"); if (edit) openForm(edit.dataset.edit, edit.dataset.id); const del = e.target.closest("[data-delete]"); if (del) removeRecord(del.dataset.delete, del.dataset.id); const exp = e.target.closest("[data-export]"); if (exp) exportCSV(exp.dataset.export); const inv = e.target.closest("[data-invoice]"); if (inv) showInvoice(inv.dataset.invoice); const day = e.target.closest("[data-calendar-date]"); if (day) { $("#formFields").dataset.date = day.dataset.calendarDate; openForm("task"); const dateInput = $('#formFields [name="date"]'); if (dateInput) dateInput.value = day.dataset.calendarDate } });
+        $("#dataForm").addEventListener("submit", handleSubmit); $("#modalClose").addEventListener("click", () => $("#modalOverlay").classList.remove("active")); $("#cancelModal").addEventListener("click", () => $("#modalOverlay").classList.remove("active")); $("#modalOverlay").addEventListener("click", e => { if (e.target.id === "modalOverlay") $("#modalOverlay").classList.remove("active") }); document.addEventListener("keydown", e => { if (e.key === "Escape") $("#modalOverlay").classList.remove("active") });
+        ["inventoryFilter", "stockFilter", "salesFilter", "cropsFilter", "suppliersFilter"].forEach(id => $("#" + id).addEventListener("input", () => ({ inventoryFilter: renderInventory, stockFilter: renderInventory, salesFilter: renderSales, cropsFilter: renderCrops, suppliersFilter: renderSuppliers }[id])()));
+        $("#globalSearch").addEventListener("input", e => { const q = e.target.value.toLowerCase(); const page = $(".page.active")?.id; if (page === "page-inventory") { $("#inventoryFilter").value = q; renderInventory() } else if (page === "page-sales") { $("#salesFilter").value = q; renderSales() } else if (page === "page-crops") { $("#cropsFilter").value = q; renderCrops() } else if (page === "page-suppliers") { $("#suppliersFilter").value = q; renderSuppliers() } else if (page === "page-users") { $("#usersTable").querySelectorAll("tr").forEach(r => r.classList.toggle("hide", !r.textContent.toLowerCase().includes(q))) } });
+        $("#calendarMonth").addEventListener("change", renderCalendar); $("#backupBtn").addEventListener("click", backup); $("#restoreBtn").addEventListener("click", restore); $("#themeBtn").addEventListener("click", () => { document.body.classList.toggle("dark"); localStorage.setItem("agrofield_theme", document.body.classList.contains("dark") ? "dark" : "light") }); $("#clearBtn").addEventListener("click", () => { if (!confirm("¿Seguro? Se borrarán todos los registros locales de AgroField.")) return; db = { products: [], sales: [], crops: [], suppliers: [], purchases: [], tasks: [], users: [], activity: [] }; saveDB(); renderAll(); toast("Se eliminaron los registros locales.") });
+        $("#todayDate").textContent = new Date().toLocaleDateString("es-CO", { weekday: "long", year: "numeric", month: "long", day: "numeric" }); if (localStorage.getItem("agrofield_theme") === "dark") document.body.classList.add("dark"); renderAll();
+    </script>
+</body>
+
+</html>
